@@ -3,7 +3,7 @@ streamlit==1.35.0
 torch
 torchvision
 fastai
-plum-dispatch==1.2.2
+plum-dispatch==1.2.0
 timm
 opencv-python-headless
 Pillow>=10.0.0
