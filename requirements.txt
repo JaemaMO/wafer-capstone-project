@@ -3,6 +3,7 @@ streamlit
 torch
 torchvision
 fastai
+timm
 opencv-python-headless
 Pillow
 numpy
