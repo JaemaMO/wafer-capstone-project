@@ -26,7 +26,7 @@ def load_model():
     if not os.path.exists(model_path):
         with st.spinner('구글 드라이브에서 대용량 AI 모델 가중치를 최초 1회 다운로드 중입니다... (약 10~20초 소요)'):
             # 🚨 본인의 구글 드라이브 파일 ID (app.py 수정 시 덮어쓰기 주의!)
-            file_id = '💡여기에_복사한_파일_ID를_넣으세요💡'
+            file_id = '16W1Vh68cez9V7cDOhmofQtcBXCRdx-_t'
             url = f'https://drive.google.com/uc?id={file_id}'
             gdown.download(url, model_path, quiet=False)
     return load_learner(model_path)
