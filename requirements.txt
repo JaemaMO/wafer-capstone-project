@@ -1,11 +1,11 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
-streamlit==1.35.0
+streamlit
 torch
 torchvision
 fastai
 timm
 opencv-python-headless
-Pillow
+Pillow>=10.0.0
 numpy<2.0.0
 gdown
 scikit-learn
