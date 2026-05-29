@@ -3,8 +3,9 @@ streamlit
 torch
 torchvision
 fastai
+plum-dispatch==2.0.0
 timm
 opencv-python-headless
 Pillow
-numpy
+numpy<2.0.0
 gdown
