@@ -5,7 +5,8 @@ import numpy as np
 import cv2
 import torch
 import os
-import gdown  # 구글 드라이브 초고속 다운로드 라이브러리
+import gdown
+import timm  # 🚨 추가된 부분: AI 뇌구조(EfficientNet) 통역사
 
 # 1. 페이지 테마 및 타이틀 디자인 세팅
 st.set_page_config(page_title="Wafer Defect Classifier", page_icon="🔍", layout="centered")
