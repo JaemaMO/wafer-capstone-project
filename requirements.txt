@@ -3,8 +3,8 @@ streamlit
 torch
 torchvision
 fastai
-plum-dispatch<2.0.0
 timm
 opencv-python-headless
 numpy<2.0.0
 gdown
+scikit-learn
