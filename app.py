@@ -1,3 +1,4 @@
+%%writefile app.py
 import streamlit as st
 from fastai.vision.all import *
 import PIL
@@ -6,16 +7,13 @@ import cv2
 import torch
 import os
 import gdown
-import timm
-
-# 🚨 [핵심 해결] 학습할 때 사용했던 커스텀 평가 지표를 웹에도 똑같이 쥐어줍니다. (없으면 모델 로딩 실패)
-recall_macro = Recall(average='macro')
+import timm  # 🚨 추가된 부분: AI 뇌구조(EfficientNet) 통역사
 
 # 1. 페이지 테마 및 타이틀 디자인 세팅
 st.set_page_config(page_title="Wafer Defect Classifier", page_icon="🔍", layout="centered")
 
 st.title("반도체 웨이퍼 결함 탐지 모델")
-st.markdown("#### 🎓 명지대학교 산업경영공학과 캡스톤 디자인 프로젝트")
+st.markdown("명지대학교 산업경영공학과 캡스톤 디자인 프로젝트")
 st.markdown("단순 증강과 디퓨전 증강으로 5000개로 증강한 모델입니다.")
 st.divider()
 
@@ -23,12 +21,15 @@ st.divider()
 @st.cache_resource
 def load_model():
     model_path = 'wafer_export_model_mix.pkl'
+    
+    # 서버에 모델 파일이 없다면 구글 드라이브에서 자동으로 다운로드 시도
     if not os.path.exists(model_path):
         with st.spinner('구글 드라이브에서 대용량 AI 모델 가중치를 최초 1회 다운로드 중입니다... (약 10~20초 소요)'):
-            # 🚨 본인의 구글 드라이브 파일 ID (app.py 수정 시 덮어쓰기 주의!)
-            file_id = '💡여기에_복사한_파일_ID를_넣으세요💡'
+            # 🚨 1단계에서 복사한 본인의 구글 드라이브 파일 ID를 아래에 붙여넣으세요!
+            file_id = '16W1Vh68cez9V7cDOhmofQtcBXCRdx-_t'
             url = f'https://drive.google.com/uc?id={file_id}'
             gdown.download(url, model_path, quiet=False)
+            
     return load_learner(model_path)
 
 try:
